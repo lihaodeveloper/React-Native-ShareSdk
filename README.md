@@ -1,4 +1,4 @@
-1.0.2版
+1.0.3版
 
 安装：   npm i react-native-sharesdk --save
 链接：   react-native link
