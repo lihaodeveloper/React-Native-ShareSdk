@@ -11,6 +11,8 @@ share sdk for react-native
 
 ### android
 
+ **qq login**
+
 1. specify your qq AppId in `node_modules/react-native-sharesdk/android/build.gradle`
 
   ```xml
