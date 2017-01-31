@@ -10,6 +10,7 @@ import {
   StyleSheet,
   Text,
   View,
+  TouchableOpacity,
   NativeModules
 } from 'react-native';
 
@@ -31,15 +32,9 @@ export default class ShareSdkExample extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.android.js
-        </Text>
-        <Text style={styles.instructions} onPress={() => this._onPressLogin()}>
-          QQ登录
-        </Text>
+        <TouchableOpacity style={styles.qqlogin} onPress={()=>this._onPressLogin()}>
+          <Text style={{fontSize: 18, color: 'black'}}>QQLogin</Text>
+        </TouchableOpacity>
       </View>
     );
   }
@@ -52,16 +47,15 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
   },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
+  qqlogin:{
+    width: 150, 
+    height: 60, 
+    borderColor: 'red', 
+    borderWidth: StyleSheet.hairlineWidth, 
+    borderRadius: 12, 
+    justifyContent: 'center', 
+    alignItems: 'center'
+  }
 });
 
 AppRegistry.registerComponent('ShareSdkExample', () => ShareSdkExample);
