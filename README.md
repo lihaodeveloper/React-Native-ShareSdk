@@ -1,10 +1,12 @@
 1.0.3版
-
-安装：   npm i react-native-sharesdk --save
-链接：   react-native link
-
 加入qq 登录 for android
 
+
+安装：   npm i react-native-sharesdk --save
+
+链接：   react-native link
+
+Android:
 1.需要在node_modules/react-native-sharesdk/android/build.gradle中替换你申请到的qq appid
          manifestPlaceholders = [
                 QQ_APP_ID: "100371282", //qq AppId
