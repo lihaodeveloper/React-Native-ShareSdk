@@ -1,0 +1,113 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/local/Cellar/node/5.9.1/bin/node',
+1 verbose cli   '/usr/local/bin/npm',
+1 verbose cli   'publish' ]
+2 info using npm@4.0.3
+3 info using node@v7.2.0
+4 verbose publish [ '.' ]
+5 silly cache add args [ '.', null ]
+6 verbose cache add spec .
+7 silly cache add parsed spec Result {
+7 silly cache add   raw: '.',
+7 silly cache add   scope: null,
+7 silly cache add   escapedName: null,
+7 silly cache add   name: null,
+7 silly cache add   rawSpec: '.',
+7 silly cache add   spec: '/Users/cc/npmworkspace/React-Native-ShareSdk',
+7 silly cache add   type: 'directory' }
+8 verbose addLocalDirectory /Users/cc/.npm/react-native-sharesdk/1.0.4/package.tgz not in flight; packing
+9 verbose correctMkdir /Users/cc/.npm correctMkdir not in flight; initializing
+10 info lifecycle react-native-sharesdk@1.0.4~prepublish: react-native-sharesdk@1.0.4
+11 silly lifecycle react-native-sharesdk@1.0.4~prepublish: no script for prepublish, continuing
+12 info lifecycle react-native-sharesdk@1.0.4~prepare: react-native-sharesdk@1.0.4
+13 silly lifecycle react-native-sharesdk@1.0.4~prepare: no script for prepare, continuing
+14 verbose tar pack [ '/Users/cc/.npm/react-native-sharesdk/1.0.4/package.tgz',
+14 verbose tar pack   '/Users/cc/npmworkspace/React-Native-ShareSdk' ]
+15 verbose tarball /Users/cc/.npm/react-native-sharesdk/1.0.4/package.tgz
+16 verbose folder /Users/cc/npmworkspace/React-Native-ShareSdk
+17 verbose addLocalTarball adding from inside cache /Users/cc/.npm/react-native-sharesdk/1.0.4/package.tgz
+18 verbose correctMkdir /Users/cc/.npm correctMkdir not in flight; initializing
+19 silly cache afterAdd react-native-sharesdk@1.0.4
+20 verbose afterAdd /Users/cc/.npm/react-native-sharesdk/1.0.4/package/package.json not in flight; writing
+21 verbose correctMkdir /Users/cc/.npm correctMkdir not in flight; initializing
+22 verbose afterAdd /Users/cc/.npm/react-native-sharesdk/1.0.4/package/package.json written
+23 silly publish { name: 'react-native-sharesdk',
+23 silly publish   version: '1.0.4',
+23 silly publish   description: 'react-native集成share sdk第三方登录，分享。',
+23 silly publish   main: 'index.js',
+23 silly publish   scripts: { test: 'echo "Error: no test specified" && exit 1' },
+23 silly publish   repository:
+23 silly publish    { type: 'git',
+23 silly publish      url: 'git+https://github.com/lihaodeveloper/React-Native-ShareSdk.git' },
+23 silly publish   keywords: [ 'react-native', 'sharesdk', 'login', 'share' ],
+23 silly publish   author: { name: '小成童鞋' },
+23 silly publish   license: 'ISC',
+23 silly publish   bugs: { url: 'https://github.com/lihaodeveloper/React-Native-ShareSdk/issues' },
+23 silly publish   homepage: 'https://github.com/lihaodeveloper/React-Native-ShareSdk#readme',
+23 silly publish   readme: '# react-native-sharesdk\nshare sdk for react-native\n\n## install\n\n`npm i react-native-sharesdk --save`\n\n## link\n\n`react-native link react-native-sharesdk`\n\n### IOS\n\n **qq login**\n\n 1. Open your app\'s Xcode project, Find the `node_modules/react-native-sharesdk/ios/rnsharesdk/ShareSDK` directory \n    and drag it into your [$(SRCROOT)] directory, uncheck \'copy items if needed\'.\n\n 2. Under the "Build Settings" tab of your project configuration, find the "Framework Search Paths" section and edit the value. Add new value,\n    `$(SRCROOT)/../node_modules/react-native-sharesdk/ios/rnsharesdk/ShareSDK`,\n    `$(SRCROOT)/../node_modules/react-native-sharesdk/ios/rnsharesdk/ShareSDK/Support/Optional`,\n    `$(SRCROOT)/../node_modules/react-native-sharesdk/ios/rnsharesdk/ShareSDK/Support/PlatformConnector`,\n    `$(SRCROOT)/../node_modules/react-native-sharesdk/ios/rnsharesdk/ShareSDK/Support/Required`,\n    `$(SRCROOT)/../node_modules/react-native-sharesdk/ios/rnsharesdk/ShareSDK/Support/PlatformSDK/QQSDK`,\n    find the "Library Search Paths" section and edit the value. Add new value,\n    `$(SRCROOT)/../node_modules/react-native-sharesdk/ios/rnsharesdk/ShareSDK/Support/PlatformSDK/WeChatSDK`,\n\n 3.Click the plus sign underneath the "Link Binary With Libraries" list and add the\n   `libicucore.tbd, libz.tbd, libstdc++.tbd, JavaScriptCore.framework, libsqlite3.tbd`\n   ![Add tbd](https://github.com/lihaodeveloper/React-Native-ShareSdk/tree/master/asset/tbdimg.png)\n\n 4.Under the "Info" tab of your project configuration, find the "URL Types" section and add your app Id.\n   exm:tencent100371282, 100371282 is your app Id.\n\n 5.Under the "Info" tab of your project configuration, add LSApplicationQueriesSchemes of type Array For QQ SDK.\n   \n 6.specify your sharesdk appkey, qq appid and appkey in `node_modules/react-native-sharesdk/ios/rnsharesdk/MobLogin.m`\n   ```objectiv-c\n      [ShareSDK registerApp:@"iosv1101"\n   ```\n\n   ```objectiv-c\n      onConfiguration:^(SSDKPlatformType platformType, NSMutableDictionary *appInfo) {\n                  \n                  switch (platformType)\n                  {\n                      case SSDKPlatformTypeQQ:\n                          [appInfo SSDKSetupQQByAppId:@"100371282"\n                                               appKey:@"aed9b0303e3ed1e27bae87c33761161d"\n                                             authType:SSDKAuthTypeBoth];\n                          break;\n                      default:\n                          break;\n                  }\n              }];\n   ```\n\n\n### ANDROID\n\n **qq login**\n\n1. specify your qq AppId in `node_modules/react-native-sharesdk/android/build.gradle`\n\n  ```xml\n  defaultConfig {\n        ...\n        manifestPlaceholders = [\n                QQ_APP_ID: "100371282", //qq AppId\n        ]\n    }\n  ```\n\n2. specify your sharesdk appkey in `node_modules/react-native-sharesdk/android/src/main/assets/ShareSDK.xml`\n\n  ```xml\n  <ShareSDK\n        AppKey = "androidv1101"/> <!-- 修改成你在sharesdk后台注册的应用的appkey"-->\n  ```\n\n3. specify your qq appid and appkey in `node_modules/react-native-sharesdk/android/src/main/assets/ShareSDK.xml`\n\n  ```xml\n  <!-- ShareByAppClient标识是否使用微博客户端分享，默认是false -->\n\t<QQ\n        Id="7"\n        SortId="7"\n        AppId="100371282"\n        AppKey="aed9b0303e3ed1e27bae87c33761161d"\n        ShareByAppClient="true"\n        Enable="true" />\n  ```\n\n## usage\n\n```\n...\nimport { NativeModules } from \'react-native\'\nconst {MobLogin} = NativeModules\n\n...\n_onPressLogin() {\n    MobLogin.loginWithQQ().then((data) => {\n      console.log(\'token: \', data.token)\n      console.log(\'user_id: \', data.user_id)\n      console.log(\'user_name: \', data.user_name)\n      console.log(\'user_gender: \', data.user_gender)\n      console.log(\'user_icon: \', data.user_icon)\n    }, (code, mes) => {\n      console.log(code, mes)\n    })\n}\n\nrender() {\n    return (\n      <View style={styles.container}>\n        <TouchableOpacity style={styles.qqlogin} onPress={()=>this._onPressLogin()}>\n          <Text style={{fontSize: 18, color: \'black\'}}>QQLogin</Text>\n        </TouchableOpacity>\n      </View>\n    )\n}\n',
+23 silly publish   readmeFilename: 'README.md',
+23 silly publish   gitHead: 'd73efb08d7bc7cf7ea816b067650717496a2107f',
+23 silly publish   _id: 'react-native-sharesdk@1.0.4',
+23 silly publish   _shasum: '8da44e2d13d193efc009b5e02e6819780e5c1ca3',
+23 silly publish   _from: '.' }
+24 info lifecycle react-native-sharesdk@1.0.4~prepublishOnly: react-native-sharesdk@1.0.4
+25 silly lifecycle react-native-sharesdk@1.0.4~prepublishOnly: no script for prepublishOnly, continuing
+26 verbose getPublishConfig undefined
+27 silly mapToRegistry name react-native-sharesdk
+28 silly mapToRegistry using default registry
+29 silly mapToRegistry registry http://registry.npmjs.org/
+30 silly mapToRegistry data Result {
+30 silly mapToRegistry   raw: 'react-native-sharesdk',
+30 silly mapToRegistry   scope: null,
+30 silly mapToRegistry   escapedName: 'react-native-sharesdk',
+30 silly mapToRegistry   name: 'react-native-sharesdk',
+30 silly mapToRegistry   rawSpec: '',
+30 silly mapToRegistry   spec: 'latest',
+30 silly mapToRegistry   type: 'tag' }
+31 silly mapToRegistry uri http://registry.npmjs.org/react-native-sharesdk
+32 verbose publish registryBase http://registry.npmjs.org/
+33 silly publish uploading /Users/cc/.npm/react-native-sharesdk/1.0.4/package.tgz
+34 verbose request uri http://registry.npmjs.org/react-native-sharesdk
+35 verbose request sending authorization for write operation
+36 info attempt registry request try #1 at 10:05:58
+37 verbose request using bearer token for auth
+38 verbose request id 485c5e203acfad01
+39 http request PUT http://registry.npmjs.org/react-native-sharesdk
+40 http 403 http://registry.npmjs.org/react-native-sharesdk
+41 verbose headers { 'content-type': 'application/json',
+41 verbose headers   'cache-control': 'max-age=300',
+41 verbose headers   'content-length': '95',
+41 verbose headers   'accept-ranges': 'bytes',
+41 verbose headers   date: 'Fri, 03 Feb 2017 02:07:20 GMT',
+41 verbose headers   via: '1.1 varnish',
+41 verbose headers   connection: 'keep-alive',
+41 verbose headers   'x-served-by': 'cache-nrt6121-NRT',
+41 verbose headers   'x-cache': 'MISS',
+41 verbose headers   'x-cache-hits': '0',
+41 verbose headers   'x-timer': 'S1486087558.470370,VS0,VE82263',
+41 verbose headers   vary: 'Accept-Encoding' }
+42 verbose request invalidating /Users/cc/.npm/registry.npmjs.org/react-native-sharesdk on PUT
+43 error publish Failed PUT 403
+44 verbose stack Error: "You cannot publish over the previously published version 1.0.4." : react-native-sharesdk
+44 verbose stack     at makeError (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:302:12)
+44 verbose stack     at CachingRegistryClient.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:290:14)
+44 verbose stack     at Request._callback (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:210:14)
+44 verbose stack     at Request.self.callback (/usr/local/lib/node_modules/npm/node_modules/request/request.js:186:22)
+44 verbose stack     at emitTwo (events.js:106:13)
+44 verbose stack     at Request.emit (events.js:191:7)
+44 verbose stack     at Request.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:1081:10)
+44 verbose stack     at emitOne (events.js:96:13)
+44 verbose stack     at Request.emit (events.js:188:7)
+44 verbose stack     at IncomingMessage.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:1001:12)
+45 verbose statusCode 403
+46 verbose pkgid react-native-sharesdk
+47 verbose cwd /Users/cc/npmworkspace/React-Native-ShareSdk
+48 error Darwin 16.3.0
+49 error argv "/usr/local/Cellar/node/5.9.1/bin/node" "/usr/local/bin/npm" "publish"
+50 error node v7.2.0
+51 error npm  v4.0.3
+52 error code E403
+53 error "You cannot publish over the previously published version 1.0.4." : react-native-sharesdk
+54 error If you need help, you may report this error at:
+54 error     <https://github.com/npm/npm/issues>
+55 verbose exit [ 1, true ]
