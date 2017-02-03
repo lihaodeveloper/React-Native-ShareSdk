@@ -14,7 +14,7 @@ share sdk for react-native
  **qq login**
 
  1. Open your app's Xcode project, Find the `node_modules/react-native-sharesdk/ios/rnsharesdk/ShareSDK` directory 
-    and drag it into your [$(SRCROOT)] directory, uncheck 'copy items if needed'.
+    and drag it into your `Libraries` directory, uncheck 'copy items if needed'.
 
  2. Under the "Build Settings" tab of your project configuration, find the "Framework Search Paths" section and edit the value. Add new value,
     `$(SRCROOT)/../node_modules/react-native-sharesdk/ios/rnsharesdk/ShareSDK`,
@@ -27,10 +27,11 @@ share sdk for react-native
 
  3.Click the plus sign underneath the "Link Binary With Libraries" list and add the
    `libicucore.tbd, libz.tbd, libstdc++.tbd, JavaScriptCore.framework, libsqlite3.tbd`
-   ![Add tbd](https://github.com/lihaodeveloper/React-Native-ShareSdk/tree/master/asset/tbdimg.png)
+
+   ![tbdimg](https://github.com/lihaodeveloper/React-Native-ShareSdk/blob/master/asset/tbdimg.png)
 
  4.Under the "Info" tab of your project configuration, find the "URL Types" section and add your app Id.
-   exm:tencent100371282, 100371282 is your app Id.
+   exm:`tencent100371282`, 100371282 is your app Id.
 
  5.Under the "Info" tab of your project configuration, add LSApplicationQueriesSchemes of type Array For QQ SDK.
    
