@@ -34,6 +34,10 @@ share sdk for react-native
    exm:`tencent100371282`, 100371282 is your app Id.
 
  5.Under the "Info" tab of your project configuration, add LSApplicationQueriesSchemes of type Array For QQ SDK.
+
+   ![lsqschemesimg](https://github.com/lihaodeveloper/React-Native-ShareSdk/blob/master/asset/lsqschemes.png)
+   
+   ### items details from [LSApplicationQueriesSchemes](http://wiki.mob.com/ios9-对sharesdk的影响（适配ios-9必读）/) 
    
  6.specify your sharesdk appkey, qq appid and appkey in `node_modules/react-native-sharesdk/ios/rnsharesdk/MobLogin.m`
    ```objectiv-c

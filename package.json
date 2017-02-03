@@ -1,6 +1,6 @@
 {
   "name": "react-native-sharesdk",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "react-native集成share sdk第三方登录，分享。",
   "main": "index.js",
   "scripts": {
