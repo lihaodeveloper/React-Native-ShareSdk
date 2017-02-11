@@ -16,7 +16,10 @@ import cn.sharesdk.framework.Platform;
 import cn.sharesdk.framework.PlatformActionListener;
 import cn.sharesdk.framework.PlatformDb;
 import cn.sharesdk.framework.ShareSDK;
+import cn.sharesdk.onekeyshare.OnekeyShare;
+import cn.sharesdk.onekeyshare.OnekeyShareTheme;
 import cn.sharesdk.tencent.qq.QQ;
+import cn.sharesdk.wechat.friends.Wechat;
 
 /**
  * Created by cc on 2017/1/29.
@@ -52,6 +55,41 @@ public class MobLoginModule extends ReactContextBaseJavaModule implements Platfo
         qq.setPlatformActionListener(this);
         qq.showUser(null);
         mPromise = promise;
+    }
+
+    @ReactMethod
+    public void loginWithWeChat(Promise promise) {
+        Platform wechat = ShareSDK.getPlatform(Wechat.NAME);
+        if(wechat.isAuthValid()){
+            wechat.removeAccount(true);
+        }
+        wechat.setPlatformActionListener(this);
+        wechat.showUser(null);
+        mPromise = promise;
+    }
+
+    @ReactMethod
+    public void showShare(String title, String text) {
+        OnekeyShare oks = new OnekeyShare();
+        oks.setSilent(true);
+        //ShareSDK快捷分享提供两个界面第一个是九宫格 CLASSIC  第二个是SKYBLUE
+        oks.setTheme(OnekeyShareTheme.CLASSIC);
+        // 令编辑页面显示为Dialog模式
+        oks.setDialogMode();
+        // 在自动授权时可以禁用SSO方式
+        oks.disableSSOWhenAuthorize();
+//        // title标题，印象笔记、邮箱、信息、微信、人人网、QQ和QQ空间使用
+//        oks.setTitle("试试咯");
+//        // text是分享文本，所有平台都需要这个字段
+//        oks.setText("我是分享文本");
+        // title标题，印象笔记、邮箱、信息、微信、人人网、QQ和QQ空间使用
+        oks.setTitle(title);
+        // text是分享文本，所有平台都需要这个字段
+        oks.setText(text);
+        // url仅在微信（包括好友和朋友圈）中使用
+//        oks.setUrl("http://sharesdk.cn");
+        // 启动分享GUI
+        oks.show(mContext);
     }
 
     @Override

@@ -11,27 +11,28 @@ share sdk for react-native
 
 ### IOS
 
- **qq login**
+ **qq 微信登录**
 
- 1. Open your app's Xcode project, Find the `node_modules/react-native-sharesdk/ios/rnsharesdk/ShareSDK` directory 
-    and drag it into your `Libraries` directory, uncheck 'copy items if needed'.
+ 1. 打开Xcode app项目文件夹, 找到路径为`node_modules/react-native-sharesdk/ios/rnsharesdk/ShareSDK`的目录
+    并且拖动到`Libraries`目录,不要勾选'copy items if needed'。
 
- 2. Under the "Build Settings" tab of your project configuration, find the "Framework Search Paths" section and edit the value. Add new value,
+ 2. 在项目中找到"Build Settings"这一栏, 继续往下找到"Framework Search Paths" 这一节，加入以下这些路径值：
     `$(SRCROOT)/../node_modules/react-native-sharesdk/ios/rnsharesdk/ShareSDK`,
     `$(SRCROOT)/../node_modules/react-native-sharesdk/ios/rnsharesdk/ShareSDK/Support/Optional`,
     `$(SRCROOT)/../node_modules/react-native-sharesdk/ios/rnsharesdk/ShareSDK/Support/PlatformConnector`,
     `$(SRCROOT)/../node_modules/react-native-sharesdk/ios/rnsharesdk/ShareSDK/Support/Required`,
     `$(SRCROOT)/../node_modules/react-native-sharesdk/ios/rnsharesdk/ShareSDK/Support/PlatformSDK/QQSDK`,
-    find the "Library Search Paths" section and edit the value. Add new value,
+    继续找到"Library Search Paths" 这一节，加入以下这些路径值：
     `$(SRCROOT)/../node_modules/react-native-sharesdk/ios/rnsharesdk/ShareSDK/Support/PlatformSDK/WeChatSDK`,
 
- 3.Click the plus sign underneath the "Link Binary With Libraries" list and add the
+ 3.在项目中找到"Build Phases"这一栏, 继续往下找到"Link Binary With Libraries"这一节，加入以下这些库：
    `libicucore.tbd, libz.tbd, libstdc++.tbd, JavaScriptCore.framework, libsqlite3.tbd`
+   具体依赖如下图
 
    ![tbdimg](https://github.com/lihaodeveloper/React-Native-ShareSdk/blob/master/asset/tbdimg.png)
 
- 4.Under the "Info" tab of your project configuration, find the "URL Types" section and add your app Id.
-   exm:`tencent100371282`, 100371282 is your app Id.
+ 4.在项目中找到"Info"这一栏, 继续往下找到"URL Types"这一节，点击"+"号添加一栏数据，填入qq appid,微信app key
+   例如:`tencent100371282`, 100371282 是qq appid.
 
  5.Under the "Info" tab of your project configuration, add LSApplicationQueriesSchemes of type Array For QQ SDK.
 
@@ -104,17 +105,33 @@ import { NativeModules } from 'react-native'
 const {MobLogin} = NativeModules
 
 ...
-_onPressLogin() {
+_onPressQQLogin() {
     MobLogin.loginWithQQ().then((data) => {
       console.log('token: ', data.token)
       console.log('user_id: ', data.user_id)
       console.log('user_name: ', data.user_name)
       console.log('user_gender: ', data.user_gender)
       console.log('user_icon: ', data.user_icon)
-    }, (code, mes) => {
-      console.log(code, mes)
+    }, (err) => {
+      console.log(err)
     })
-}
+  }
+
+  _onPressWeChatLogin() {
+    MobLogin.loginWithWeChat().then((data) => {
+      console.log('token: ', data.token)
+      console.log('user_id: ', data.user_id)
+      console.log('user_name: ', data.user_name)
+      console.log('user_gender: ', data.user_gender)
+      console.log('user_icon: ', data.user_icon)
+    }, (err) => {
+      console.log(err)
+    })
+  }
+
+  _onPressShare() {
+    MobLogin.showShare('我是标题', '分享什么内容')
+  }
 
 render() {
     return (
@@ -122,6 +139,7 @@ render() {
         <TouchableOpacity style={styles.qqlogin} onPress={()=>this._onPressLogin()}>
           <Text style={{fontSize: 18, color: 'black'}}>QQLogin</Text>
         </TouchableOpacity>
+        ....
       </View>
     )
 }
