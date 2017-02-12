@@ -35,7 +35,7 @@ export default class App extends Component {
   }
 
   _onPressShare() {
-    MobLogin.showShare('我是标题', '分享什么内容')
+    MobLogin.showShare('我是标题', '分享什么内容', 'http://sharesdk.cn', 'http://f1.sharesdk.cn/imgs/2014/02/26/owWpLZo_638x960.jpg')
   }
 
   render() {

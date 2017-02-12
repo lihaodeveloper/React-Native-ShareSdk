@@ -118,16 +118,16 @@ RCT_EXPORT_METHOD(loginWithWeChat:(RCTPromiseResolveBlock)resolve rejecter:(RCTP
     });
 }
 
-RCT_EXPORT_METHOD(showShare:(NSString *)title :(NSString *)text) {
+RCT_EXPORT_METHOD(showShare:(NSString *)title :(NSString *)content :(NSString *)url :(NSString *)imgUrl) {
     dispatch_async(dispatch_get_main_queue(), ^{
         //1、创建分享参数（必要）
         NSMutableDictionary *shareParams = [NSMutableDictionary dictionary];
-        NSArray* imageArray = @[@"http://ww4.sinaimg.cn/bmiddle/005Q8xv4gw1evlkov50xuj30go0a6mz3.jpg"];
-        [shareParams SSDKSetupShareParamsByText:text
+        NSArray* imageArray = @[imgUrl];
+        [shareParams SSDKSetupShareParamsByText:content
                                          images:imageArray
-                                            url:[NSURL URLWithString:@"http://www.mob.com"]
+                                            url:[NSURL URLWithString:url]
                                           title:title
-                                           type:SSDKContentTypeImage];
+                                           type:SSDKContentTypeAuto];
         //2、分享（可以弹出我们的分享菜单和编辑界面）
         [ShareSDK showShareActionSheet:nil //要显示菜单的视图, iPad版中此参数作为弹出菜单的参照视图，只有传这个才可以弹出我们的分享菜单，可以传分享的按钮对象或者自己创建小的view 对象，iPhone可以传nil不会影响
                                  items:nil

@@ -69,7 +69,7 @@ public class MobLoginModule extends ReactContextBaseJavaModule implements Platfo
     }
 
     @ReactMethod
-    public void showShare(String title, String text) {
+    public void showShare(String title, String text, String url, String imageUrl) {
         OnekeyShare oks = new OnekeyShare();
         oks.setSilent(true);
         //ShareSDK快捷分享提供两个界面第一个是九宫格 CLASSIC  第二个是SKYBLUE
@@ -78,16 +78,16 @@ public class MobLoginModule extends ReactContextBaseJavaModule implements Platfo
         oks.setDialogMode();
         // 在自动授权时可以禁用SSO方式
         oks.disableSSOWhenAuthorize();
-//        // title标题，印象笔记、邮箱、信息、微信、人人网、QQ和QQ空间使用
-//        oks.setTitle("试试咯");
-//        // text是分享文本，所有平台都需要这个字段
-//        oks.setText("我是分享文本");
         // title标题，印象笔记、邮箱、信息、微信、人人网、QQ和QQ空间使用
         oks.setTitle(title);
+        // titleUrl是标题的网络链接，仅在Linked-in,QQ和QQ空间使用
+        oks.setTitleUrl(url);
         // text是分享文本，所有平台都需要这个字段
         oks.setText(text);
+        //分享网络图片，新浪微博分享网络图片需要通过审核后申请高级写入接口，否则请注释掉测试新浪微博
+        oks.setImageUrl(imageUrl);
         // url仅在微信（包括好友和朋友圈）中使用
-//        oks.setUrl("http://sharesdk.cn");
+        oks.setUrl(url);
         // 启动分享GUI
         oks.show(mContext);
     }
